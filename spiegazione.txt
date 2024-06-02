@@ -1,0 +1,68 @@
+Obiettivo
+L'applicazione prevede l'utilizzo di un nastro trasportatore su cui viaggiano pezzi Lego di diversi colori. Una webcam USB montata sopra il nastro acquisisce in continuazione immagini degli oggetti in movimento. Queste immagini vengono elaborate tramite tecniche di visione artificiale e object counting implementate in Python, con l'ausilio della libreria OpenCV, per rilevare e contare i pezzi Lego di ciascun colore.
+
+Il sistema può essere avviato e arrestato tramite comandi vocali, grazie all'integrazione della libreria speech_recognition di Python. Un microfono collegato al sistema è in grado di rilevare i comandi vocali dell'utente, che vengono interpretati e tradotti in istruzioni per il controllo del nastro trasportatore.
+
+Arduino funge da controllore principale del nastro trasportatore, ricevendo i comandi di avvio/arresto da Python tramite comunicazione seriale. Allo stesso modo, Arduino invia a Python informazioni sullo stato del nastro (in funzione, fermo, ecc.) per consentire un monitoraggio in tempo reale.
+
+Componenti Utilizzati
+Risorse Hardware
+•	n.1 Nastro trasportatore - costo variabile
+•	n.1 Telecamera per object detection – 50 €
+•	n.1 Schede Arduino UNO - costo 25 €
+•	n.1 Breadboard - costo 8 €
+•	n.80 Jumper - costo 5 €
+•	n.1 LED rosso - costo 0,20 €
+•	n.1 LED verde - costo 0,20 €
+•	n.1 LED blu - costo 0,20 €
+•	n.1 LED giallo - costo 0,20 €
+•	n.4 Resistenze da 220 Ohm - costo 1,50 euro
+•	n.1 Monitor LCD I2C – 10 €
+Risorse Software
+•	Arduino IDE
+•	PyCharm 
+ 
+
+Procedimento di Realizzazione
+Procedimento
+
+Fase 1: Installazione del Sistema
+1.	Preparazione del Nastro Trasportatore e della Telecamera
+•	Installare il nastro trasportatore in modo che possa trasportare i pezzi Lego sotto la telecamera.
+•	Posizionare la telecamera sopra il nastro trasportatore in modo che abbia una visione chiara dei pezzi che passano.
+2.	Collegamento della Scheda Arduino e monitor LCD I2C
+•	Colleghiamo l’Arduino alla breadboard tramite un jumper rosso dal pin di alimentazione da 5V di Arduino al pin positivo della breadboard e un jumper nero dal GND di Arduino al pin negativo della breadboard. 
+•	Colleghiamo il pin analogico A4 dell'Arduino Master al pin SDA del monitor LCD I2C. Successivamente, colleghiamo il pin analogico A5 dell'Arduino Master al pin SCL del monitor LCD I2C. Infine, utilizziamo i jumper per collegare i pin di alimentazione del monitor ai rispettivi pin positivi e negativi della breadboard.
+3.	Collegamento dei LED e delle Resistenze
+•	Posizioniamo i LED rosso, verde, blu e giallo sulla breadboard, ciascuno con una resistenza da 220 Ohm in serie collegata al GND della breadboard.
+•	Colleghiamo gli anodi dei LED ai pin digitali dell’Arduino.
+
+Fase 2: Implementazione Software Arduino
+
+•	Programmare lo sketch Arduino per il controllo del nastro trasportatore, includendo le funzioni per l'avvio, l'arresto e la lettura dello stato del nastro.
+•	Integrare la libreria per la comunicazione seriale con Python
+
+Fase 3: Implementazione Software Python
+•	Installare la libreria OpenCV per Python.
+•	Implementare un programma Python che utilizzi OpenCV per acquisire il flusso video dalla webcam.
+•	Sviluppare un algoritmo di visione artificiale per rilevare e contare gli oggetti (pezzi Lego) di diversi colori presenti sulle immagini acquisite.
+•	Installare la libreria speech_recognition per Python.
+•	Implementare un modulo Python che utilizzi speech_recognition per rilevare e interpretare i comandi vocali dell'utente.
+•	Integrare questo modulo con il programma principale, associando i comandi vocali alle azioni di avvio e arresto del nastro trasportatore.
+•	
+               Fase 4: Comunicazione Seriale
+•	Utilizzare il modulo seriale di Python per stabilire una connessione seriale con Arduino.
+•	Implementare funzioni per inviare comandi di avvio/arresto ad Arduino e ricevere informazioni sullo stato del nastro trasportatore.
+•	Implementare un modulo Python per il salvataggio dei dati relativi al conteggio degli oggetti e allo stato del nastro trasportatore.
+•	Salvataggio dati su un file di testo.
+•	Integrare questo modulo con il programma principale, schedulando il salvataggio dei dati a intervalli regolari.
+  Fase 5: Integrazione, Test e Documentazione 
+
+•	 Testare il funzionamento dell'intero sistema, verificando la corretta interazione tra Arduino e Python,                             l'object counting, il riconoscimento dei comandi vocali e il salvataggio dei dati.
+•	 Effettuare eventuali ottimizzazioni e correzioni di bug.
+•	Documentare il codice sorgente e le istruzioni per l'installazione e l'utilizzo del sistema.
+•	Preparare il sistema per il deployment nell'ambiente produzione desiderato.
+
+Conclusioni
+
+Il progetto sviluppato rappresenta una soluzione integrata e innovativa per l'automazione industriale, sfruttando le potenzialità della visione artificiale e del riconoscimento vocale. Attraverso l'utilizzo della libreria OpenCV, siamo riusciti a implementare un sistema efficiente per il rilevamento e il conteggio dei pezzi Lego di vari colori, dimostrando come tecniche avanzate di visione artificiale possano essere applicate a contesti reali. L'integrazione con Arduino e il controllo vocale tramite la libreria speech_recognition hanno ulteriormente potenziato il sistema, rendendolo facile da utilizzare e monitorare. Questa applicazione non solo illustra le capacità dei componenti hardware e software utilizzati, ma apre anche la strada a molteplici sviluppi futuri. Si potrebbe, per esempio, ampliare il sistema per includere il riconoscimento di forme diverse, migliorare l'algoritmo di visione artificiale per aumentare la precisione e la velocità di rilevamento, o implementare un'interfaccia utente più sofisticata per il controllo e il monitoraggio del nastro trasportatore. In sintesi, il progetto dimostra come sia possibile realizzare un sistema complesso e multifunzionale con risorse relativamente semplici e accessibili. Le competenze acquisite e i risultati ottenuti possono servire da base per ulteriori esplorazioni e innovazioni nel campo dell'automazione e della robotica, contribuendo al progresso tecnologico e alla creazione di soluzioni sempre più efficienti e intelligenti.
